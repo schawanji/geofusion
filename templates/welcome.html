@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to GeoFusion API</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .api-section {
+            margin-top: 40px;
+        }
+        .api-endpoint {
+            margin-bottom: 30px;
+        }
+        .api-endpoint h2 {
+            font-size: 1.5rem;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .api-endpoint p {
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-left: 5px solid #007bff;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            color: #333;
+        }
+        .api-parameters {
+            list-style: none;
+            padding: 0;
+        }
+        .api-parameters li {
+            background-color: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .api-parameters li strong {
+            display: inline-block;
+            width: 150px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the GeoFusion API</h1>
+        <p>This API allows you to join geospatial data with tabular data. Use the following endpoints to interact with the API:</p>
+        
+        <div class="api-section">
+            <div class="api-endpoint">
+                <h2>1. Join Data Endpoint: <code>/tjs/api/joindata</code></h2>
+                <p><strong>Description:</strong> Fetches GeoJSON data from a GeoServer and joins it with a CSV file based on specified keys.</p>
+                
+                <h3>Parameters:</h3>
+                <ul class="api-parameters">
+                    <li><strong>FrameworkURI:</strong> The URL to the GeoServer providing the GeoJSON data.</li>
+                    <li><strong>layer:</strong> The name of the layer in the GeoServer.</li>
+                    <li><strong>GetDataURL:</strong> The URL to the CSV file containing the tabular data.</li>
+                    <li><strong>FrameworkKey:</strong> The key in the GeoJSON data to join on.</li>
+                    <li><strong>AttributeKey:</strong> The key in the CSV data to join on.</li>
+                </ul>
+
+                <h3>Example:</h3>
+                <pre><code>GET /tjs/api/joindata?FrameworkURI=http://localhost:8081/geoserver/topp/ows&layer=topp:states&GetDataURL=https://example.com/data.csv&FrameworkKey=STATE_NAME&AttributeKey=StateName</code></pre>
+            </div>
+
+            <div class="api-endpoint">
+                <h2>2. Get GeoJSON Tile Endpoint: <code>/tjs/api/tms/</code></h2>
+                <p><strong>Description:</strong> Fetches GeoJSON tiles from a GeoServer.</p>
+
+                <h3>Parameters:</h3>
+                <ul class="api-parameters">
+                    <li><strong>FrameworkURI:</strong> The URL to the GeoServer providing the GeoJSON tiles.</li>
+                    <li><strong>GetDataURL:</strong> The URL to the CSV file.</li>
+                    <li><strong>FrameworkKey:</strong> The key in the GeoJSON data.</li>
+                    <li><strong>AttributeKey:</strong> The key in the CSV data.</li>
+                </ul>
+
+                <h3>Example:</h3>
+                <pre><code>GET /tjs/api/tms/?FrameworkURI=http://localhost:8081/geoserver/topp/ows&GetDataURL=https://example.com/data.csv&FrameworkKey=STATE_NAME&AttributeKey=StateName</code></pre>
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2024 GeoFusion API. All Rights Reserved.
+        </footer>
+    </div>
+</body>
+</html>

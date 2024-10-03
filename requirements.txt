@@ -6,3 +6,4 @@ geopandas
 pandas
 requests
 flask_cors
+python-dotenv
