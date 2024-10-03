@@ -9,6 +9,9 @@ ENV PYTHONUNBUFFERED=1
 # Set the working directory
 WORKDIR /app
 
+# Copy the .env file into the container
+COPY .env /app/.env
+
 # Copy the requirements file into the container
 COPY requirements.txt .
 
@@ -19,7 +22,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
 
 # Expose the port the app runs on
-EXPOSE 5000
+EXPOSE 5001
 
 # Define the command to run the app
 CMD ["python", "app.py"]
